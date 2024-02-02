@@ -10,13 +10,18 @@ type PageLoadedAction = {
 };
 type LoadingAction = { type: "loading" };
 type IdleAction = { type: "idle" };
+type TokenBalanceAction = {
+  type: "token_balance";
+  tokenBalances: string[];
+}
 
 type Action =
   | ConnectAction
   | DisconnectAction
   | PageLoadedAction
   | LoadingAction
-  | IdleAction;
+  | IdleAction
+  | TokenBalanceAction;
 
 type Dispatch = (action: Action) => void;
 
@@ -27,6 +32,7 @@ type State = {
   isMetamaskInstalled: boolean;
   status: Status;
   balance: string | null;
+  tokenBalances: string[];
 };
 
 const initialState: State = {
@@ -34,6 +40,7 @@ const initialState: State = {
   isMetamaskInstalled: false,
   status: "loading",
   balance: null,
+  tokenBalances: []
 } as const;
 
 function metamaskReducer(state: State, action: Action): State {
@@ -62,6 +69,10 @@ function metamaskReducer(state: State, action: Action): State {
     }
     case "idle": {
       return { ...state, status: "idle" };
+    }
+    case "token_balance": {
+      const { tokenBalances } = action;
+      return { ... state, tokenBalances};
     }
 
     default: {

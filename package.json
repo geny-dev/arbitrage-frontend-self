@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@metamask/sdk": "^0.14.2",
+    "@web3-onboard/core": "^2.21.2",
+    "@web3-onboard/injected-wallets": "^2.10.11",
+    "@web3-onboard/metamask": "^2.0.2",
+    "dotenv": "^16.4.1",
+    "ether": "^0.0.9",
     "next": "13.2.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "web3": "^4.4.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
